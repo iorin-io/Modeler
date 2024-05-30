@@ -28,6 +28,15 @@ private:
 	//-------------------------------------------------------------------------
 
 		// ～～～変数を追加～～～
+	double dt;
+	double G;
+	double r;
+
+	double angle_prev;
+	double angle_curr;
+	double angle_next;
+
+	Vec3d pos;
 
 
 	//～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～
@@ -49,7 +58,13 @@ public:
 		//---------------------------------------------------------------------
 
 			// ～～～変数を初期化～～～
+		dt = 0.06;
+		G = 9.8;
+		r = 6.0;
 
+		angle_prev = angle_curr = angle_next = M_PI / 4.0;
+
+		pos = Vec3d( r*sin(angle_next), -r*cos(angle_next), 0);
 
 		//～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～
 	}
@@ -66,6 +81,8 @@ public:
 		//-----------------------------------------------------------------
 
 			// ～～～プログラムを記述～～～
+		angle_prev = angle_curr;
+		angle_curr = angle_next;
 
 		//-----------------------------------------------------------------
 	}
@@ -151,7 +168,7 @@ public:
 			glTranslated(-5, -5, -5);
 			drawBox(10, 0.2, 10);
 		glPopMatrix();
-
+		/*
 		glTranslated( GetSliderValue( X_POSITION ), GetSliderValue( Y_POSITION ), GetSliderValue( Z_POSITION ) );
 
 		glPushMatrix();
@@ -188,7 +205,13 @@ public:
 				drawCylinder( 2, 0.2, 0.2 );
 			glPopMatrix();
 		}
-
+		*/
+		glBegin( GL_LINES );
+			glVertex3d( 0, 0, 0 );
+			glVertex3d( pos[0], pos[1], pos[2] );
+		glEnd();
+		glTranslated( pos[0], pos[1], pos[2] );
+		drawSphere( 0.5 );
 		//---------------------------------------------------------------------
 
 		// 描画終了
