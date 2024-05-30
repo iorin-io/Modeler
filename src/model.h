@@ -158,7 +158,29 @@ public:
 
 		setDiffuseColor(0.0f, 0.0f, 0.5f, 1.0f);
 
-		drawCylinder(3, 3, 3);
+		Vec3d A(-2, -2, 0);
+
+		Vec3d B(2, -2, 0);
+
+		Vec3d C(0, 2, 0);
+
+		// 法線ベクトルの計算
+
+		Vec3d N = (A - C) ^ (B - C);
+
+		// ポリゴンの描画
+
+		glBegin(GL_TRIANGLES);
+
+			glNormal3d(N[0], N[1], N[2]);
+
+			glVertex3d(A[0], A[1], A[2]);
+
+			glVertex3d(B[0], B[1], B[2]);
+
+			glVertex3d(C[0], C[1], C[2]);
+
+		glEnd();
 
 		//---------------------------------------------------------------------
 
