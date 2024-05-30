@@ -138,13 +138,24 @@ public:
 
 		 // ～～～プログラムを記述～～～
 		 // 拡散反射光を設定
-		setDiffuseColor(0.0f, 0.0f, 0.5f, 1.0f);
+		
 		// 環境光を設定
 		setAmbientColor(0.5f, 0.5f, 0.5f);
 		// 鏡面反射光を設定
 		setSpecularColor(1.0f, 1.0f, 1.0f);
 		// ハイライトの強さを設定
 		setShininess(20.0f);
+
+		glPushMatrix();
+			setDiffuseColor( 0.5f, 0.3f, 0.0f, 1.0f );
+			glTranslated(-5, -5, -5);
+			drawBox(10, 0.2, 10);
+		glPopMatrix();
+
+		glTranslated( GetSliderValue( X_POSITION ), 0.0f, 0.0f );
+
+		setDiffuseColor(0.0f, 0.0f, 0.5f, 1.0f);
+
 		drawCylinder(3, 3, 3);
 
 		//---------------------------------------------------------------------
