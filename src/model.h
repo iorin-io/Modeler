@@ -100,6 +100,13 @@ public:
 
 			// ～～～プログラムを記述～～～
 
+        angle_prev = angle_curr;
+    	angle_curr = angle_next;
+
+	    angle_next = 2 * angle_curr - angle_prev - (G / r) * sin(angle_curr) * dt * dt;
+
+
+	    pos = Vec3d(r * sin(angle_next), -r * cos(angle_next), 0);
 		//-----------------------------------------------------------------
 	}
 
@@ -169,7 +176,7 @@ public:
 
 		glPushMatrix();
 			setDiffuseColor( 0.5f, 0.3f, 0.0f, 1.0f );
-			glTranslated(-5, -5, -5);
+			glTranslated(-5, -10, -5);
 			drawBox(10, 0.2, 10);
 		glPopMatrix();
 		/*
@@ -214,6 +221,8 @@ public:
 			glVertex3d( 0, 0, 0 );
 			glVertex3d( pos[0], pos[1], pos[2] );
 		glEnd();
+
+		setDiffuseColor(0.0f, 0.0f, 0.5f, 1.0f);
 		glTranslated( pos[0], pos[1], pos[2] );
 		drawSphere( 0.5 );
 		//---------------------------------------------------------------------
