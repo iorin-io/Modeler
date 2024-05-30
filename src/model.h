@@ -152,9 +152,7 @@ public:
 			drawBox(10, 0.2, 10);
 		glPopMatrix();
 
-		glTranslated( GetSliderValue( X_POSITION ), 0.0f, 0.0f );
-		glTranslated( 0.0f, GetSliderValue( Y_POSITION ), 0.0f );
-		glTranslated( 0.0f, 0.0f, GetSliderValue( Z_POSITION ) );
+		glTranslated( GetSliderValue( X_POSITION ), GetSliderValue( Y_POSITION ), GetSliderValue( Z_POSITION ) );
 
 		setDiffuseColor(0.0f, 0.0f, 0.5f, 1.0f);
 
