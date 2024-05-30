@@ -153,32 +153,41 @@ public:
 		glPopMatrix();
 
 		glTranslated( GetSliderValue( X_POSITION ), GetSliderValue( Y_POSITION ), GetSliderValue( Z_POSITION ) );
+		
+		glPushMatrix();
+			setDiffuseColor(0.0f, 0.0f, 0.5f, 1.0f);
 
-		setDiffuseColor(0.0f, 0.0f, 0.5f, 1.0f);
+			Vec3d A(-2, -2, 0);
 
-		Vec3d A(-2, -2, 0);
+			Vec3d B(2, -2, 0);
 
-		Vec3d B(2, -2, 0);
+			Vec3d C(0, 2, 0);
 
-		Vec3d C(0, 2, 0);
+			// 法線ベクトルの計算
 
-		// 法線ベクトルの計算
+			Vec3d N = (A - C) ^ (B - C);
 
-		Vec3d N = (A - C) ^ (B - C);
+			// ポリゴンの描画
 
-		// ポリゴンの描画
+			glBegin(GL_TRIANGLES);
 
-		glBegin(GL_TRIANGLES);
+				glNormal3d(N[0], N[1], N[2]);
 
-			glNormal3d(N[0], N[1], N[2]);
+				glVertex3d(A[0], A[1], A[2]);
 
-			glVertex3d(A[0], A[1], A[2]);
+				glVertex3d(B[0], B[1], B[2]);
 
-			glVertex3d(B[0], B[1], B[2]);
+				glVertex3d(C[0], C[1], C[2]);
 
-			glVertex3d(C[0], C[1], C[2]);
-
-		glEnd();
+			glEnd();
+		glPopMatrix();
+		for ( int i=0; i<=10; i++ ) {
+			glPushMatrix();
+				glTranslated( i-5, 0, 0 );
+				glRotated( i*9, 1, 0, 0 );
+				drawCylinder( 2, 0.2, 0.2 );
+			glPopMatrix();
+		}
 
 		//---------------------------------------------------------------------
 
