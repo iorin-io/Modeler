@@ -81,8 +81,12 @@ public:
 		//-----------------------------------------------------------------
 
 			// ～～～プログラムを記述～～～
+		angle_next = 2.0 * angle_curr - angle_prev - G * dt * dt / r * sin(angle_curr);
+
 		angle_prev = angle_curr;
 		angle_curr = angle_next;
+
+		pos = Vec3d( r*sin(angle_next), -r*cos(angle_next), 0);
 
 		//-----------------------------------------------------------------
 	}
