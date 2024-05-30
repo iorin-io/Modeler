@@ -153,8 +153,8 @@ public:
 		glPopMatrix();
 
 		glTranslated( GetSliderValue( X_POSITION ), 0.0f, 0.0f );
-		glTranslated( GetSliderValue( Y_POSITION ), 0.0f, 0.0f );
-		glTranslated( GetSliderValue( Z_POSITION ), 0.0f, 0.0f );
+		glTranslated( 0.0f, GetSliderValue( Y_POSITION ), 0.0f );
+		glTranslated( 0.0f, 0.0f, GetSliderValue( Z_POSITION ) );
 
 		setDiffuseColor(0.0f, 0.0f, 0.5f, 1.0f);
 
