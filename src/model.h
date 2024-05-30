@@ -138,7 +138,7 @@ public:
 
 		 // ～～～プログラムを記述～～～
 		 // 拡散反射光を設定
-		
+	
 		// 環境光を設定
 		setAmbientColor(0.5f, 0.5f, 0.5f);
 		// 鏡面反射光を設定
@@ -153,6 +153,8 @@ public:
 		glPopMatrix();
 
 		glTranslated( GetSliderValue( X_POSITION ), 0.0f, 0.0f );
+		glTranslated( GetSliderValue( Y_POSITION ), 0.0f, 0.0f );
+		glTranslated( GetSliderValue( Z_POSITION ), 0.0f, 0.0f );
 
 		setDiffuseColor(0.0f, 0.0f, 0.5f, 1.0f);
 
